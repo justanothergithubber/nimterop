@@ -139,6 +139,7 @@ template getCommented*(str: string): string =
 
 # Redirect output to file when required
 template gecho*(args: string) =
+  bind gState
   when defined(TOAST):
     when nimvm:
       echo args
@@ -151,6 +152,7 @@ template gecho*(args: string) =
     echo args
 
 template decho*(args: varargs[string, `$`]): untyped =
+  bind gState
   let
     str = join(args, "")
   when defined(TOAST):

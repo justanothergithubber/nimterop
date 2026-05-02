@@ -337,7 +337,7 @@ macro getHeader*(
   ## required.
   ##
   ## `buildTypes` specifies a list of ordered build strategies to use when building the
-  ## downloaded source files. Default is [btCmake, btAutoconf]
+  ## downloaded source files. Default is `btCmake`, `btAutoconf`
   ##
   ## `xxxPreBuild` is a hook that is called after the source code is pulled from Git or
   ## downloaded but before the library is built. This might be needed if some initial prep

@@ -88,7 +88,7 @@ proc setCmakeProperty*(outdir, name, property, value: string) =
       cm.readFile() & getCmakePropertyStr(name, property, value)
     )
 
-proc setCmakeLibName*(outdir, name, prefix = "", oname = "", suffix = "") =
+proc setCmakeLibName*(outdir, name: string; prefix = "", oname = "", suffix = "") =
   ## Set a `cmake` property in `outdir / CMakeLists.txt` to specify a custom library output
   ## name - usable in the `xxxPreBuild` hook for `getHeader()`
   ##

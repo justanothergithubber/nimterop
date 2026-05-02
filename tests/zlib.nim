@@ -26,7 +26,7 @@ elif defined(envTestStatic):
 getHeader(
   "zlib.h",
   giturl = "https://github.com/madler/zlib",
-  dlurl = "https://zlib.net/fossils/zlib-$1.tar.gz",
+  dlurl = "https://github.com/madler/zlib/archive/refs/tags/v$1.tar.gz",
   outdir = baseDir,
   altNames = "z,zlib"
 )

@@ -37,6 +37,7 @@ const
   CharRegex = re2(CharRegStr)
 
 template val(node: TSNode): string =
+  bind gState
   gState.currentExpr.getNodeVal(node)
 
 proc printDebugExpr*(gState: State, node: TSNode) =

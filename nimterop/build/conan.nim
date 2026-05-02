@@ -99,7 +99,7 @@ proc `==`*(pkg1, pkg2: ConanPackage): bool =
     pkg1.bhash == pkg2.bhash and
     pkg1.shared == pkg2.shared)
 
-proc newConanPackage*(name, version, user = "_", channel = "_", bhash = "", shared = true): ConanPackage =
+proc newConanPackage*(name, version: string; user = "_", channel = "_", bhash = "", shared = true): ConanPackage =
   ## Create a new ConanPackage with specified name and version
   result = new(ConanPackage)
   result.name = name
@@ -121,7 +121,11 @@ proc newConanPackage*(name, version, user = "_", channel = "_", bhash = "", shar
   result.shared = shared
 
 proc newConanPackageFromUri*(uri: string, shared = true): ConanPackage =
-  ## Create a new ConanPackage from a conan uri typically formatted as name/version[@user/channel][:bhash]
+  ## Create a new ConanPackage from a conan uri typically formatted as:
+  ##   pkgname
+  ##   pkgname/version
+  ##   pkgname/version@user/channel
+  ##   pkgname/version@user/channel:bhash
   var
     name, version, user, channel, bhash: string
 

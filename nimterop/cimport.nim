@@ -190,7 +190,7 @@ proc cAddSearchDir*(dir: string) {.compileTime.} =
     gStateCT.searchDirs.add(dir)
 
 proc cAddStdDir*(mode = "c") {.compileTime.} =
-  ## Add the standard `c` [default] or `cpp` include paths to search
+  ## Add the standard `c` or `cpp` include paths to search
   ## path used in calls to `cSearchPath()`.
   runnableExamples:
     import os

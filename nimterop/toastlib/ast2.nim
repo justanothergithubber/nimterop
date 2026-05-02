@@ -393,7 +393,7 @@ proc newXIdent(gState: State, node: TSNode, kind = nskType, fname = "", pragmas:
   else:
     decho &"{getKeyword(kind)} '{origname}' is duplicate, skipped"
 
-proc newArrayTree(gState: State, node: TSNode, typ, size: PNode = nil): PNode =
+proc newArrayTree(gState: State, node: TSNode, typ: PNode = nil; size: PNode = nil): PNode =
   # Create nkBracketExpr tree depending on input
   #
   # If `size` is nil, create UncheckedArray[typ]
