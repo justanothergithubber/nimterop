@@ -34,7 +34,7 @@ type
 
 const
   CharRegStr = "(\\\\x[[:xdigit:]]{2}|\\\\\\d{3}|\\\\0|\\\\a|\\\\b|\\\\e|\\\\f|\\\\n|\\\\r|\\\\t|\\\\v|\\\\\\\\|\\\\'|\\\\\"|[[:ascii:]])"
-  CharRegex = re(CharRegStr)
+  CharRegex = re2(CharRegStr)
 
 template val(node: TSNode): string =
   gState.currentExpr.getNodeVal(node)
@@ -251,7 +251,9 @@ proc processStringLiteral(gState: State, node: TSNode): PNode =
   # Convert the c string escape sequences/etc to Nim chars
   var nimStr = newStringOfCap(nodeVal.len)
   for m in strVal.findAll(CharRegex):
-    nimStr.add(parseChar(strVal[m.group(0)[0]]).chr)
+    # m.group(0) is the slice, use it to index strVal
+    let capture = strVal[m.group(0)] 
+    nimStr.add(parseChar(capture).chr)
 
   result = newStrNode(nkStrLit, nimStr)
 

@@ -212,7 +212,7 @@ proc getIdentifier*(gState: State, name: string, kind: NimSymKind, parent=""): s
       # --replace from CLI if specified
       for name, value in gState.replace.pairs:
           if name.len > 1 and name[0] == '@':
-            result = result.replace(re(name[1 .. ^1]), value)
+            result = result.replace(re2(name[1 .. ^1]), value)
           else:
             result = result.replace(name, value)
 

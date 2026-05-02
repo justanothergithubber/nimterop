@@ -1,6 +1,6 @@
 {.experimental: "codeReordering".}
 
-import strutils, os
+import os
 
 include ".."/enumtype
 import ".."/[paths, setup]

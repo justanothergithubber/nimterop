@@ -7,7 +7,7 @@ import cligen
 import strutils except find
 import regex except find
 
-proc findRec(dir: string, pattern: string | Regex, recurse: bool) =
+proc findRec(dir: string, pattern: string | Regex2, recurse: bool) =
   for kind, path in walkDir(dir):
     if kind in [pcDir, pcLinkToDir]:
       if recurse: findRec(path, pattern, recurse)
@@ -17,7 +17,7 @@ proc findRec(dir: string, pattern: string | Regex, recurse: bool) =
 proc find(recurse = false, rexp = false, args: seq[string]) =
   var
     pat = ""
-    rpat: Regex
+    rpat: Regex2
   for arg in args:
     if not arg.startsWith("-"):
       if dirExists(arg):
@@ -27,7 +27,7 @@ proc find(recurse = false, rexp = false, args: seq[string]) =
           findRec(arg, pat, recurse)
       else:
         pat = arg
-        if rexp: rpat = re(arg)
+        if rexp: rpat = re2(arg)
 
 when isMainModule:
   dispatchMulti([

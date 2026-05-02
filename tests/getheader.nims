@@ -22,7 +22,7 @@ var
   zexp = "zlib version = "
 
 when (NimMajor, NimMinor, NimPatch) >= (1, 2, 0):
-  cmd &= " --gc:arc"
+  cmd &= " --mm:arc"
 
 testCall(cmd & lrcmd, "No build files found", 1)
 # Conan bintray deprecated as of 2022
