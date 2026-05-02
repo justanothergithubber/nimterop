@@ -5,7 +5,6 @@ const
 
 getHeader(
   header = "libssh2.h",
-  conanuri = "libssh2/$1",
   jbburi = "libssh2/1.9.0",
   outdir = outdir
 )

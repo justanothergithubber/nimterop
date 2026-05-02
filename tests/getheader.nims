@@ -25,7 +25,9 @@ when (NimMajor, NimMinor, NimPatch) >= (1, 2, 0):
   cmd &= " --gc:arc"
 
 testCall(cmd & lrcmd, "No build files found", 1)
-testCall(cmd & " -d:libssh2Conan" & sshcmd, "Need version for Conan.io uri", 1)
+# Conan bintray deprecated as of 2022
+# All Conan tests disabled.
+# testCall(cmd & " -d:libssh2Conan" & sshcmd, "Need version for Conan.io uri", 1)
 testCall(cmd & " -d:libssh2JBB -d:libssh2SetVer=1.9.0" & sshcmd, "Version in both uri", 1)
 
 when defined(posix):
@@ -42,10 +44,11 @@ when defined(posix):
   testCall(cmd & " -d:lzmaGit -d:lzmaStatic -d:lzmaSetVer=v5.2.0" & lrcmd, lexp & "5.2.0", 0, delete = false)
 
   # conan static
-  testCall(cmd & " -d:libssh2Conan -d:libssh2SetVer=1.9.0 -d:libssh2Static" & sshcmd, zexp, 0)
+  # testCall(cmd & " -d:libssh2Conan -d:libssh2SetVer=1.9.0 -d:libssh2Static" & sshcmd, zexp, 0)
 else:
   # conan static for Windows
-  testCall(cmd & " -d:zlibConan -d:zlibSetVer=1.2.11 -d:zlibStatic" & zrcmd, zexp, 0)
+  # testCall(cmd & " -d:zlibConan -d:zlibSetVer=1.2.11 -d:zlibStatic" & zrcmd, zexp, 0)
+  discard
 
 # JBB
 testCall(cmd & " -d:libssh2JBB" & sshcmd, zexp, 0)
@@ -71,5 +74,5 @@ testCall(cmd & " -d:zlibDL -d:zlibSetVer=1.2.11" & zrcmd, zexp & "1.2.11", 0)
 testCall(cmd & " -d:zlibDL -d:zlibStatic -d:zlibSetVer=1.2.11" & zrcmd, zexp & "1.2.11", 0, delete = false)
 
 # conan
-testCall(cmd & " -d:libssh2Conan -d:libssh2SetVer=1.9.0" & sshcmd, zexp, 0)
-testCall(cmd & " -d:lzmaConan -d:lzmaSetVer=5.2.4" & lrcmd, lexp & "5.2.4", 0)
+# testCall(cmd & " -d:libssh2Conan -d:libssh2SetVer=1.9.0" & sshcmd, zexp, 0)
+# testCall(cmd & " -d:lzmaConan -d:lzmaSetVer=5.2.4" & lrcmd, lexp & "5.2.4", 0)

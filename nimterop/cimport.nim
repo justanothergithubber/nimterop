@@ -253,7 +253,7 @@ macro cIncludeDir*(dir: static[string], exclude: static[bool] = false): untyped 
   ##
   ## This needs to be called before `cImport()` to take effect.
   return quote do:
-    cIncludeDir(@[`dir`], `exclude` == 1)
+    cIncludeDir(@[`dir`], `exclude`)
 
 macro cExclude*(paths: static seq[string]): untyped =
   ## Exclude specified paths - files or directories from the wrapped output

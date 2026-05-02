@@ -24,10 +24,10 @@ cOverride:
     ABC = pointer
 
     GHI = object
-      f2: ptr ptr cint
+      f2*: ptr ptr cint
 
     JKL = object
-      f2: ptr ptr cint
+      f2*: ptr ptr cint
 
   const
     BIT* = 1
@@ -112,7 +112,7 @@ check s51.tcv() == nil
 e = enum1
 e2 = enum4
 
-u2.field2 = 'c'
+u2.field2 = 99.uint8  # 'c'
 
 i = 5
 
@@ -126,7 +126,7 @@ when defined(cpp) and defined(OSX):
 else:
   check test_call_param4(e) == e2
 check test_call_param5(5.0).field2 == 5.0
-check test_call_param6(u2) == 'c'
+check test_call_param6(u2).char == 'c'
 u.field1 = 4
 check test_call_param7(u) == 4
 
